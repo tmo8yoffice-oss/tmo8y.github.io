@@ -304,6 +304,10 @@ button { -webkit-tap-highlight-color: transparent; }
 
 /* ── WHAT WE DO ── */
 .what { background: var(--g700); }
+.what .sec-eyebrow { color: var(--g100); }
+.what .sec-eyebrow::before { background: var(--g100); }
+.what .sec-title { color: var(--white); }
+.what .sec-title em { color: var(--g100); }
 .what-steps { display: flex; flex-direction: column; gap: 2px; }
 .what-step {
   padding: 28px 22px; background: rgba(255,255,255,0.92);
@@ -326,7 +330,7 @@ button { -webkit-tap-highlight-color: transparent; }
   font-size: 15px; font-weight: 400;
   color: var(--ink); margin-bottom: 8px;
 }
-.what-step-body { font-size: 13px; line-height: 1.95; color: var(--mid); word-break: keep-all; overflow-wrap: break-word; }
+.what-step-body { font-size: 13px; line-height: 1.95; color: var(--mid); word-break: keep-all; overflow-wrap: break-word; width: 100%; }
 .what-step > div { min-width: 0; overflow: hidden; }
 
 /* ── BACKGROUND / FOUNDER ── */
@@ -580,10 +584,7 @@ footer {
 <!-- NAV -->
 <nav class="nav" id="nav">
   <div class="nav-logo-wrap">
-    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <rect x="1" y="1" width="24" height="24" rx="2" stroke="#1a3d2b" stroke-width="1.5" fill="none"/>
-      <text x="13" y="18" font-family="Georgia,serif" font-size="13" font-weight="400" text-anchor="middle" fill="#1a3d2b">8</text>
-    </svg>
+    <img src="logo.png" alt="" class="nav-logo-img" onerror="this.style.display='none'">
     <span class="nav-brand">8olais</span>
   </div>
   <a href="#contact" class="nav-cta">相談する</a>
