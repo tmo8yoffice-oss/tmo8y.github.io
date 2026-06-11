@@ -330,6 +330,26 @@ button { -webkit-tap-highlight-color: transparent; }
 .what-step-body { font-size: 13px; line-height: 1.95; color: var(--mid); word-break: keep-all; overflow-wrap: break-word; width: 100%; }
 .what-step > div { min-width: 0; overflow: hidden; }
 
+/* ── FOUNDER PHOTO ── */
+.founder-profile {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 16px; margin-bottom: 32px;
+}
+.founder-photo {
+  width: 120px; height: 120px;
+  border-radius: 50%; object-fit: cover; object-position: center top;
+  border: 3px solid var(--g100);
+}
+.founder-name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 17px; font-weight: 400;
+  color: var(--ink); letter-spacing: 2px;
+}
+.founder-title {
+  font-size: 11px; letter-spacing: 2px;
+  color: var(--g500); margin-top: 4px;
+}
+
 /* ── BACKGROUND / FOUNDER ── */
 .background { background: var(--white); }
 .bg-quote {
@@ -725,6 +745,13 @@ footer {
 <section class="sec background" id="background">
   <p class="sec-eyebrow reveal">Background</p>
   <h2 class="sec-title reveal">28年の現場から、<br><em>小規模経営者のそばへ。</em></h2>
+  <div class="founder-profile reveal">
+    <img src="founder.png" alt="津守浩通" class="founder-photo">
+    <div style="text-align:center;">
+      <div class="founder-name">津守 浩通</div>
+      <div class="founder-title">8olais Founder</div>
+    </div>
+  </div>
   <p class="sec-body reveal">FC事業において、15店舗から業界第二位278店舗への拡大を支援。250店舗管理時の加盟店撤退率0%、事業部長時代に経常利益654%改善を実現。代表取締役として事業再生にも携わり、本部側・加盟店側の両方の論理を身体で知っています。</p>
   <div class="bg-quote reveal">
     <p class="bg-quote-text">大手コンサルが来ない規模の経営者こそ、判断の伴走者を必要としている。その確信から、8olaisを立ち上げました。</p>
