@@ -215,6 +215,26 @@ button { -webkit-tap-highlight-color: transparent; }
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ── HERO CREDENTIALS ── */
+.hero-creds {
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid rgba(26,61,43,0.15);
+  margin-bottom: 24px;
+  opacity: 0; animation: fadeUp 0.78s var(--ease) 0.94s forwards;
+}
+.hero-cred-item {
+  padding: 12px 16px;
+  font-size: 13px; line-height: 1.5;
+  color: var(--mid);
+  border-bottom: 1px solid rgba(26,61,43,0.08);
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-cred-item:last-child { border-bottom: none; }
+.hero-cred-item::before {
+  content: '✦';
+  color: var(--g500); font-size: 9px; flex-shrink: 0;
+}
+
 .hero-stats {
   display: grid; grid-template-columns: repeat(2, 1fr);
   gap: 1px; background: var(--g100);
@@ -709,23 +729,12 @@ footer {
       「この契約を進めるべきか」「この人材を採用するべきか」——
       そういう判断を、一緒に考えるパートナーがいますか？
     </p>
-    <div class="hero-stats">
-      <div class="hstat">
-        <div class="hstat-n">278<span style="font-size:14px;">店</span></div>
-        <div class="hstat-l">FC展開実績<br>（15店舗から成長）</div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-n">0<span style="font-size:14px;">%</span></div>
-        <div class="hstat-l">加盟店撤退率<br>（250店舗管理時）</div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-n">654<span style="font-size:14px;">%</span></div>
-        <div class="hstat-l">経常利益改善<br>（事業部長時代）</div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-n">28<span style="font-size:14px;">年</span></div>
-        <div class="hstat-l">フランチャイズ<br>実務経験</div>
-      </div>
+    <div class="hero-creds">
+      <div class="hero-cred-item">組織マネジメント歴 20年以上</div>
+      <div class="hero-cred-item">本部長・事業責任者経験</div>
+      <div class="hero-cred-item">加盟店撤退率0% / 経常利益654%改善</div>
+      <div class="hero-cred-item">DX・業務改善実績多数</div>
+      <div class="hero-cred-item">現役事業会社マネージャー</div>
     </div>
     <a href="mailto:tmo8y.office@gmail.com?subject=初回相談のご希望" class="hero-btn">初回相談（無料）を申し込む</a>
   </div>
@@ -772,7 +781,7 @@ footer {
 <!-- WHAT WE DO -->
 <section class="sec what" id="what">
   <p class="sec-eyebrow reveal">What We Do</p>
-  <h2 class="sec-title reveal">8つの領域で、<br><em>経営者の判断を支える。</em></h2>
+  <h2 class="sec-title reveal">9つの領域で、<br><em>経営者の判断を支える。</em></h2>
   <div class="service-grid">
 
     <div class="service-card reveal">
@@ -829,6 +838,13 @@ footer {
       <div class="service-tag">Digital</div>
       <div class="service-title">EC・デジタル運営支援</div>
       <div class="service-body">ECサイト構築・物流体制・業務自動化。Shopify・GASを活用した仕組みづくりと運営体制の整備を支援します。</div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">09</div>
+      <div class="service-tag">DX / AI</div>
+      <div class="service-title">DX・AI活用支援</div>
+      <div class="service-body">生成AI・ChatGPT導入支援・プロンプト設計・業務自動化。現場で実際に使える仕組みとして導入を支援します。</div>
     </div>
 
   </div>
