@@ -591,6 +591,38 @@ button { -webkit-tap-highlight-color: transparent; }
 }
 .promise-item span { min-width: 0; overflow-wrap: break-word; word-break: keep-all; }
 
+/* ── SERVICE CARDS ── */
+.service-grid { display: flex; flex-direction: column; gap: 2px; }
+.service-card {
+  background: rgba(255,255,255,0.06);
+  padding: 26px 22px;
+  border-left: 3px solid transparent;
+  transition: border-color 0.22s, background 0.22s;
+  overflow: hidden; width: 100%;
+}
+.service-card:active { border-color: var(--g100); background: rgba(255,255,255,0.1); }
+.service-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 300;
+  color: rgba(255,255,255,0.12); line-height: 1; margin-bottom: 8px;
+}
+.service-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px; font-weight: 400;
+  color: var(--white); margin-bottom: 8px; line-height: 1.6;
+}
+.service-body {
+  font-size: 13px; line-height: 1.9;
+  color: rgba(255,255,255,0.55);
+  word-break: keep-all; overflow-wrap: break-word;
+}
+.service-tag {
+  display: inline-block;
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--g100); border: 1px solid rgba(200,230,212,0.3);
+  padding: 3px 8px; margin-bottom: 10px;
+}
+
 /* ── CASE STUDIES ── */
 .case-section { background: var(--g50); }
 .case-card { background: var(--white); padding: 28px 22px; }
@@ -740,32 +772,65 @@ footer {
 <!-- WHAT WE DO -->
 <section class="sec what" id="what">
   <p class="sec-eyebrow reveal">What We Do</p>
-  <h2 class="sec-title reveal">判断を代わりに<br>下すのではなく、<br><em>判断できる状態をつくる。</em></h2>
-  <div class="what-steps">
-    <div class="what-step reveal">
-      <div class="what-step-icon">C</div>
-      <div>
-        <div class="what-step-label">Clarify</div>
-        <div class="what-step-title">事実の構造化</div>
-        <div class="what-step-body">契約書・財務数値・現場の声・メールの往来。散らばった情報を、<span class="em-green">判断に必要な形に整理</span>します。<span class="em-green">事実と推測は必ず分けます。</span></div>
-      </div>
+  <h2 class="sec-title reveal">8つの領域で、<br><em>経営者の判断を支える。</em></h2>
+  <div class="service-grid">
+
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <div class="service-tag">Management</div>
+      <div class="service-title">経営判断支援</div>
+      <div class="service-body">契約・意思決定・事業判断。経営者が迷う場面を構造化し、<span style="color:var(--g100);">事実と推測を分けて</span>次の一手を整理します。</div>
     </div>
-    <div class="what-step reveal">
-      <div class="what-step-icon">A</div>
-      <div>
-        <div class="what-step-label">Analyze</div>
-        <div class="what-step-title">論点の可視化</div>
-        <div class="what-step-body"><span class="em-green">法的・財務・信用・運用の4軸</span>でリスクを優先順位付きで整理。不明点は不明と明記し、根拠のない安心は提供しません。</div>
-      </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <div class="service-tag">Franchise</div>
+      <div class="service-title">FC展開支援</div>
+      <div class="service-body">本部・加盟店どちらの立場でも対応。<span style="color:var(--g100);">撤退率0%・経常利益654%改善</span>の実績をもとに、FC特有の課題を支援します。</div>
     </div>
-    <div class="what-step reveal">
-      <div class="what-step-icon">A</div>
-      <div>
-        <div class="what-step-label">Accompany</div>
-        <div class="what-step-title">判断の伴走</div>
-        <div class="what-step-body">経営者が自らの軸で意思決定できるよう、判断の瞬間に立ち会います。<span class="em-green">答えを渡すのではなく、判断できる人をつくります。</span></div>
-      </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <div class="service-tag">Organization</div>
+      <div class="service-title">組織・採用支援</div>
+      <div class="service-body">採用判断・離職対策・組織設計。人の問題か、構造の問題か。原因を整理して解決策を決めます。</div>
     </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">04</div>
+      <div class="service-tag">Legal</div>
+      <div class="service-title">契約・法務サポート</div>
+      <div class="service-body">契約書のリスク箇所を抽出・整理。専門家判断が必要な場合は、適切な専門家へつなぎます。</div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">05</div>
+      <div class="service-tag">Finance</div>
+      <div class="service-title">財務・数値支援</div>
+      <div class="service-body">収支構造の可視化・損益の読み方・予算管理。数字を根拠とした意思決定を支援します。</div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">06</div>
+      <div class="service-tag">Turnaround</div>
+      <div class="service-title">事業再建支援</div>
+      <div class="service-body">不振事業の立て直し・撤退判断。精神論ではなく、市場調査と課題分析から解決策を設計します。</div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">07</div>
+      <div class="service-tag">New Business</div>
+      <div class="service-title">新規事業立ち上げ支援</div>
+      <div class="service-body">事業計画の立案から実行・検証まで。子会社代表として新規事業を0から立ち上げた経験をもとに支援します。</div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">08</div>
+      <div class="service-tag">Digital</div>
+      <div class="service-title">EC・デジタル運営支援</div>
+      <div class="service-body">ECサイト構築・物流体制・業務自動化。Shopify・GASを活用した仕組みづくりと運営体制の整備を支援します。</div>
+    </div>
+
   </div>
 </section>
 
