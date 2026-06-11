@@ -436,7 +436,7 @@ button { -webkit-tap-highlight-color: transparent; }
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.1);
   padding: 32px 22px;
-  overflow: hidden; width: 100%;
+  overflow: hidden; width: 100%; box-sizing: border-box;
 }
 .plan-tag {
   font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
@@ -458,9 +458,9 @@ button { -webkit-tap-highlight-color: transparent; }
 .plan-item-title {
   font-size: 14px; font-weight: 400;
   color: rgba(255,255,255,0.85); margin-bottom: 5px; line-height: 1.5;
-  word-break: keep-all; overflow-wrap: break-word;
+  word-break: keep-all; overflow-wrap: break-word; width: 100%; display: block;
 }
-.plan-item-body { font-size: 12px; line-height: 1.9; color: rgba(255,255,255,0.45); word-break: keep-all; }
+.plan-item-body { font-size: 12px; line-height: 1.9; color: rgba(255,255,255,0.45); word-break: keep-all; overflow-wrap: break-word; width: 100%; display: block; }
 .plan-note {
   font-size: 11px; line-height: 1.9;
   color: rgba(255,255,255,0.6);
@@ -696,7 +696,7 @@ footer {
     <img src="logo.png" alt="" class="nav-logo-img" onerror="this.style.display='none'">
     <span class="nav-brand">8olais</span>
   </div>
-  <a href="mailto:tmo8y.office@gmail.com?subject=初回相談のご希望" class="nav-cta">相談する</a>
+  <a href="mailto:8olais.office@gmail.com?subject=初回相談のご希望" class="nav-cta">相談する</a>
 </nav>
 
 <!-- HERO -->
@@ -736,7 +736,7 @@ footer {
       <div class="hero-cred-item">DX・業務改善実績多数</div>
       <div class="hero-cred-item">現役事業会社マネージャー</div>
     </div>
-    <a href="mailto:tmo8y.office@gmail.com?subject=初回相談のご希望" class="hero-btn">初回相談（無料）を申し込む</a>
+    <a href="mailto:8olais.office@gmail.com?subject=初回相談のご希望" class="hero-btn">初回相談（無料）を申し込む</a>
   </div>
 </section>
 
@@ -947,7 +947,7 @@ footer {
       ※ 月額15万円〜（内容・規模によりご提案）。初回相談（無料）にてヒアリングのうえ確定します。<br>
       ※ 最短契約期間6ヶ月。継続は1ヶ月単位で更新。
     </div>
-    <a href="mailto:tmo8y.office@gmail.com?subject=初回相談のご希望" class="plan-btn">初回相談（無料）を申し込む</a>
+    <a href="mailto:8olais.office@gmail.com?subject=初回相談のご希望" class="plan-btn">初回相談（無料）を申し込む</a>
   </div>
 </section>
 
@@ -1081,8 +1081,8 @@ footer {
   <p class="contact-sub reveal">初回相談は無料です。業種・規模は問いません。<br>「判断に迷っている」その状態から、一緒に整理します。</p>
   <a href="https://calendly.com/8olais-office/30min" target="_blank" rel="noopener" class="contact-btn reveal">日程を選んで予約する</a>
   <p class="contact-divider reveal">または</p>
-  <a href="mailto:tmo8y.office@gmail.com" class="calendly-btn reveal">メールで相談する</a>
-  <p class="contact-email reveal">tmo8y.office@gmail.com</p>
+  <a href="mailto:8olais.office@gmail.com" class="calendly-btn reveal">メールで相談する</a>
+  <p class="contact-email reveal">8olais.office@gmail.com</p>
 </section>
 
 </main>
@@ -1094,7 +1094,7 @@ footer {
 
 <!-- STICKY BOTTOM CTA (appears after hero) -->
 <div class="sticky-cta" id="stickyCta" aria-hidden="true">
-  <a href="mailto:tmo8y.office@gmail.com?subject=初回相談のご希望">初回相談（無料）を申し込む</a>
+  <a href="mailto:8olais.office@gmail.com?subject=初回相談のご希望">初回相談（無料）を申し込む</a>
 </div>
 
 <script>
