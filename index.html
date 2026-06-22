@@ -1,1150 +1,341 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#0f2419">
-<title>8olais（エオレ）— 経営判断の伴走支援</title>
-<meta name="description" content="8olais（エオレ）は、経営判断の伴走支援サービスです。契約・採用・財務・FC運営など、経営者が迷う場面を共に整理します。月額15万円〜。初回相談無料。">
-<meta property="og:title" content="8olais（エオレ）— 経営判断の伴走支援">
-<meta property="og:description" content="契約・採用・財務・FC運営。経営者が迷う判断を共に整理する伴走支援サービス。初回相談無料。">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://tmo8yoffice-oss.github.io">
-<meta property="og:image" content="https://tmo8yoffice-oss.github.io/logo.png">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="8olais（エオレ）— 経営判断の伴走支援">
-<meta name="twitter:description" content="契約・採用・財務・FC運営。経営者が迷う判断を共に整理する伴走支援サービス。">
-<link rel="icon" href="logo.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
-<style>
-/* ── RESET & TOKENS ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --g900: #0f2419;
-  --g700: #1a3d2b;
-  --g500: #2d6147;
-  --g300: #4a8c6a;
-  --g100: #c8e6d4;
-  --g50:  #eef7f2;
-  --ink:  #111111;
-  --mid:  #555555;
-  --pale: #f5f7f5;
-  --white: #ffffff;
-  --gold: #c9a84c;
-  --radius: 0px;
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
-}
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  overflow-x: hidden;
-}
-body {
-  font-family: 'Noto Sans JP', sans-serif;
-  font-weight: 300;
-  color: var(--ink);
-  background: var(--white);
-  overflow-x: hidden;
-  width: 100%;
-  max-width: 100vw;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-}
-img { display: block; max-width: 100%; }
-a { text-decoration: none; color: inherit; -webkit-tap-highlight-color: transparent; }
-button { -webkit-tap-highlight-color: transparent; }
-/* 全要素の横溢れ防止 */
-*, *::before, *::after { min-width: 0; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8olais ｜ 今日を生きる、また明日へ</title>
+  <meta name="description" content="8olaisは、人生の時間を大切にする人が、病気や肩書きではなく、一人の人間としてつながるための小さな場所です。" />
 
-/* ── TEXT EMPHASIS ── */
-.em-green { color: var(--g700); font-weight: 500; }
-.em-num { font-family: 'Cormorant Garamond', serif; font-size: 1.1em; color: var(--g700); font-weight: 400; }
+  <!-- OGP -->
+  <meta property="og:title" content="8olais ｜ 今日を生きる、また明日へ" />
+  <meta property="og:description" content="病気の話をしてもいい。しなくてもいい。大切なのは、その人自身だから。" />
+  <meta property="og:type" content="website" />
 
-/* ── SCROLL REVEAL ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.78s var(--ease), transform 0.78s var(--ease);
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
 
-/* ── NAV ── */
-.nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 14px 20px;
-  background: rgba(255,255,255,0.96);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(26,61,43,0.1);
-  transition: box-shadow 0.3s;
-}
-.nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.25); }
-.nav-logo-wrap { display: flex; align-items: center; gap: 10px; }
-.nav-logo-img { width: 28px; height: 28px; object-fit: contain; }
-.nav-brand {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 19px; font-weight: 400; letter-spacing: 3px;
-  color: var(--g700);
-}
-.nav-cta {
-  font-size: 10px; letter-spacing: 2px;
-  padding: 9px 16px;
-  border: 1px solid var(--g700);
-  color: var(--g700);
-  transition: all 0.22s;
-  cursor: pointer;
-  background: transparent;
-  min-height: 44px; display: flex; align-items: center;
-}
-.nav-cta:active { background: var(--g700); color: var(--white); }
+  <style>
+    :root{
+      /* 真珠の白／墨／淡いアクアマリン（光の層） */
+      --ground:#F5F4F0;
+      --ground-2:#EFEEE9;
+      --ink:#1C1C1B;
+      --ink-soft:#5C5B57;
+      --line:#E2E0D9;
+      --aqua:#7FA9AE;       /* アクアマリンの淡い青 */
+      --aqua-deep:#4E7C82;
+      --sheen:rgba(127,169,174,.10);
 
-/* ── FIXED BOTTOM CTA ── */
-.sticky-cta {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  z-index: 150;
-  padding: 12px 20px;
-  padding-bottom: max(12px, env(safe-area-inset-bottom));
-  background: var(--white);
-  border-top: 1px solid var(--g100);
-  transform: translateY(100%);
-  transition: transform 0.44s var(--ease);
-}
-.sticky-cta.visible {
-  transform: translateY(0);
-}
-.sticky-cta a {
-  display: block;
-  width: 100%;
-  padding: 16px;
-  background: var(--g700);
-  color: var(--white);
-  font-size: 12px; letter-spacing: 3px;
-  text-align: center; text-transform: uppercase;
-  min-height: 52px; display: flex; align-items: center; justify-content: center;
-}
-.sticky-cta a:active { background: var(--g900); }
+      --serif:"Noto Serif JP", serif;
+      --sans:"Noto Sans JP", sans-serif;
+    }
 
-/* ── HERO ── */
-.hero {
-  min-height: 100svh;
-  display: flex; flex-direction: column;
-  background: var(--white);
-  position: relative; overflow: hidden;
-}
-.hero-bg {
-  position: absolute; inset: 0;
-  background: none;
-}
-.hero-compass {
-  position: absolute;
-  top: 5%; right: -8%;
-  width: 220px; height: 220px;
-  opacity: 0.08;
-  animation: slowRotate 80s linear infinite;
-}
-@keyframes slowRotate {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-.hero-compass-svg circle { fill: none; stroke: var(--g300); stroke-width: 0.8; }
-.hero-compass-svg line  { stroke: var(--g300); stroke-width: 0.8; }
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      background:var(--ground);
+      color:var(--ink);
+      font-family:var(--sans);
+      font-weight:300;
+      line-height:2;
+      letter-spacing:.02em;
+      -webkit-font-smoothing:antialiased;
+    }
 
-/* ロゴ上段 */
-.hero-logo-panel {
-  position: relative; z-index: 2;
-  flex: 1;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  padding: 96px 20px 28px;
-}
-.hero-logo-main {
-  width: min(72vw, 280px);
-  height: auto;
-  object-fit: contain;
-  opacity: 0;
-  animation: fadeUp 1s var(--ease) 0.1s forwards;
-}
-.hero-logo-tagline {
-  font-size: 9px; letter-spacing: 5px; text-transform: uppercase;
-  color: var(--mid);
-  margin-top: 20px;
-  opacity: 0; animation: fadeUp 0.78s var(--ease) 0.5s forwards;
-}
+    .wrap{max-width:760px;margin:0 auto;padding:0 28px;}
 
-/* テキスト下段 */
-.hero-content {
-  position: relative; z-index: 2;
-  padding: 28px 24px 56px;
-  border-top: 1px solid rgba(26,61,43,0.1);
-}
-.hero-eyebrow {
-  font-size: 9px; letter-spacing: 5px; text-transform: uppercase;
-  color: var(--g500); margin-bottom: 16px;
-  display: flex; align-items: center; gap: 10px;
-  opacity: 0; animation: fadeUp 0.78s var(--ease) 0.6s forwards;
-}
-.hero-eyebrow::before {
-  content: ''; display: block;
-  width: 20px; height: 1px; background: var(--g500);
-}
-.hero-h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(34px, 9vw, 48px);
-  font-weight: 300; line-height: 1.2;
-  color: var(--ink); letter-spacing: 1px;
-  margin-bottom: 16px;
-  opacity: 0; animation: fadeUp 0.78s var(--ease) 0.72s forwards;
-}
-.hero-h1 em { font-style: italic; color: var(--g700); }
-.hero-sub {
-  font-size: 13px; line-height: 2;
-  color: var(--mid);
-  margin-bottom: 24px;
-  word-break: keep-all; overflow-wrap: break-word;
-  opacity: 0; animation: fadeUp 0.78s var(--ease) 0.84s forwards;
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+    /* ── 上部の言語切替（控えめ） ── */
+    .topbar{
+      display:flex;justify-content:flex-end;
+      padding:20px 28px 0;
+      font-family:var(--sans);
+      font-size:12px;letter-spacing:.18em;color:var(--ink-soft);
+    }
+    .topbar a{color:var(--ink-soft);text-decoration:none;margin-left:14px;}
+    .topbar a:hover{color:var(--ink);}
 
-/* ── HERO CREDENTIALS ── */
-.hero-creds {
-  display: flex; flex-direction: column; gap: 0;
-  border: 1px solid rgba(26,61,43,0.15);
-  margin-bottom: 24px;
-  opacity: 0; animation: fadeUp 0.78s var(--ease) 0.94s forwards;
-}
-.hero-cred-item {
-  padding: 12px 16px;
-  font-size: 13px; line-height: 1.5;
-  color: var(--mid);
-  border-bottom: 1px solid rgba(26,61,43,0.08);
-  display: flex; align-items: center; gap: 10px;
-}
-.hero-cred-item:last-child { border-bottom: none; }
-.hero-cred-item::before {
-  content: '✦';
-  color: var(--g500); font-size: 9px; flex-shrink: 0;
-}
+    /* ── ヒーロー：光の層 ── */
+    .hero{
+      position:relative;
+      min-height:82vh;
+      display:flex;flex-direction:column;justify-content:center;align-items:center;
+      text-align:center;
+      padding:80px 28px 64px;
+      overflow:hidden;
+    }
+    /* layers of light（CSSのみ・軽量） */
+    .hero::before{
+      content:"";position:absolute;inset:0;z-index:0;
+      background:
+        radial-gradient(120% 80% at 50% 6%, rgba(255,255,255,.9), rgba(255,255,255,0) 60%),
+        linear-gradient(180deg, var(--sheen) 0%, rgba(127,169,174,0) 22%),
+        linear-gradient(180deg, rgba(127,169,174,0) 60%, var(--sheen) 78%, rgba(127,169,174,0) 100%);
+      pointer-events:none;
+    }
+    .hero > *{position:relative;z-index:1;}
 
-.hero-stats {
-  display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: 1px; background: var(--g100);
-  border: 1px solid var(--g100);
-  margin-bottom: 20px;
-  opacity: 0; animation: fadeUp 0.78s var(--ease) 0.94s forwards;
-}
-.hstat {
-  padding: 18px 12px; text-align: center;
-  background: var(--white);
-}
-.hstat-n {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 28px; font-weight: 400;
-  color: var(--g700); line-height: 1;
-  margin-bottom: 8px;
-}
-.hstat-l {
-  font-size: 10px;
-  color: var(--mid); line-height: 1.6;
-  word-break: keep-all;
-}
-.hero-btn {
-  display: flex; align-items: center; justify-content: center;
-  width: 100%; min-height: 56px;
-  background: var(--g300);
-  color: var(--white);
-  font-size: 12px; letter-spacing: 3px;
-  text-transform: uppercase;
-  transition: background 0.22s;
-  opacity: 0; animation: fadeUp 0.78s var(--ease) 1.02s forwards;
-}
-.hero-btn:active { background: var(--g500); }
+    .eyebrow{
+      font-family:var(--sans);
+      font-size:11px;font-weight:400;
+      letter-spacing:.42em;text-transform:uppercase;
+      color:var(--aqua-deep);
+      margin:0 0 26px;
+    }
+    .wordmark{
+      font-family:var(--serif);font-weight:200;
+      font-size:clamp(44px,12vw,76px);
+      letter-spacing:.06em;
+      margin:0;
+      line-height:1.1;
+    }
+    .wordmark .dot{color:var(--aqua-deep);}
+    .thesis{
+      font-family:var(--serif);font-weight:300;
+      font-size:clamp(15px,4.4vw,19px);
+      line-height:2.2;
+      color:var(--ink);
+      margin:34px auto 0;max-width:34em;
+    }
+    .scrollhint{
+      margin-top:54px;
+      font-family:var(--sans);font-size:11px;letter-spacing:.3em;
+      color:var(--ink-soft);
+    }
 
-/* ── SECTION BASE ── */
-.sec { padding: 68px 24px; background: var(--white); width: 100%; overflow: hidden; }
-.sec-eyebrow {
-  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
-  color: var(--g500); margin-bottom: 14px;
-  display: flex; align-items: center; gap: 10px;
-}
-.sec-eyebrow::before {
-  content: ''; display: block;
-  width: 20px; height: 1px; background: var(--g500);
-}
-.sec-title {
-  font-family: 'Noto Serif JP', serif;
-  font-size: clamp(21px, 5.5vw, 26px);
-  font-weight: 300; line-height: 1.85;
-  color: var(--ink); margin-bottom: 32px;
-  overflow-wrap: break-word; word-break: keep-all;
-}
-.sec-title em { font-style: normal; color: var(--g700); }
-.sec-body {
-  font-size: 14px; line-height: 2.1;
-  color: var(--mid); margin-bottom: 20px;
-  word-break: keep-all; overflow-wrap: break-word;
-}
+    /* ── 章セクション ── */
+    .chapter{
+      padding:84px 0;
+      border-top:1px solid var(--line);
+    }
+    .ch-label{
+      font-family:var(--sans);
+      font-size:11px;font-weight:400;letter-spacing:.4em;text-transform:uppercase;
+      color:var(--aqua-deep);
+      margin:0 0 18px;
+    }
+    .ch-title{
+      font-family:var(--serif);font-weight:300;
+      font-size:clamp(23px,6vw,30px);
+      letter-spacing:.04em;line-height:1.7;
+      margin:0 0 30px;
+    }
+    .chapter p{
+      font-size:15px;line-height:2.15;color:var(--ink);
+      margin:0 0 20px;
+    }
 
-/* ── FOR WHO ── */
-.forwho { background: var(--white); }
-.fw-cards { display: flex; flex-direction: column; gap: 2px; }
-.fw-card {
-  padding: 26px 22px;
-  background: var(--g50);
-  border-left: 3px solid transparent;
-  overflow: hidden; width: 100%;
-  transition: border-color 0.22s, background 0.22s;
-  position: relative;
-  cursor: default;
-}
-.fw-card:active { border-color: var(--g700); background: #e4f0ea; }
-.fw-card-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 34px; font-weight: 300;
-  color: var(--g100); line-height: 1;
-  margin-bottom: 10px;
-}
-.fw-card-title {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 15px; font-weight: 400;
-  color: var(--ink); margin-bottom: 10px; line-height: 1.6;
-}
-.fw-card-body {
-  font-size: 13px; line-height: 1.95; color: var(--mid);
-  word-break: keep-all; overflow-wrap: break-word;
-}
-.fw-not {
-  margin-top: 20px; padding: 20px 22px;
-  border: 1px solid #e0e0e0;
-  background: #fafafa;
-}
-.fw-not-label {
-  font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
-  color: #aaa; margin-bottom: 10px;
-}
-.fw-not-body { font-size: 12px; line-height: 2; color: #777; word-break: keep-all; }
+    /* 引用のような囲み */
+    .quiet{
+      margin:38px 0 0;
+      padding:34px 30px;
+      background:var(--ground-2);
+      border-left:2px solid var(--aqua);
+      border-radius:2px;
+    }
+    .quiet p{
+      font-family:var(--serif);font-weight:300;
+      font-size:16px;line-height:2.3;color:var(--ink);margin:0;
+    }
 
-/* ── WHAT WE DO ── */
-.what { background: var(--g700); }
-.what .sec-eyebrow { color: var(--g100); }
-.what .sec-eyebrow::before { background: var(--g100); }
-.what .sec-title { color: var(--white); }
-.what .sec-title em { color: var(--g100); }
-.what-steps { display: flex; flex-direction: column; gap: 2px; }
-.what-step {
-  padding: 28px 22px; background: rgba(255,255,255,0.92);
-  display: flex; gap: 18px; align-items: flex-start;
-  overflow: hidden; width: 100%;
-}
-.what-step-icon {
-  width: 38px; height: 38px; flex-shrink: 0;
-  border-radius: 50%; background: var(--g700);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 16px; color: var(--white);
-}
-.what-step-label {
-  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--g700); margin-bottom: 5px;
-}
-.what-step-title {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 15px; font-weight: 400;
-  color: var(--ink); margin-bottom: 8px;
-}
-.what-step-body { font-size: 13px; line-height: 1.95; color: var(--mid); word-break: keep-all; overflow-wrap: break-word; width: 100%; }
-.what-step > div { min-width: 0; overflow: hidden; }
+    /* できること：箱ではなく静かな列 */
+    .list{margin:30px 0 0;}
+    .item{
+      padding:26px 0;
+      border-top:1px solid var(--line);
+      display:grid;grid-template-columns:1fr;gap:8px;
+    }
+    .item:first-child{border-top:none;}
+    .item h3{
+      font-family:var(--serif);font-weight:400;
+      font-size:18px;letter-spacing:.03em;margin:0;
+    }
+    .item p{font-size:14px;color:var(--ink-soft);margin:0;line-height:2;}
 
-/* ── FOUNDER PHOTO ── */
-.founder-profile {
-  display: flex; flex-direction: column; align-items: center;
-  gap: 16px; margin-bottom: 32px;
-}
-.founder-photo {
-  width: 120px; height: 120px;
-  border-radius: 50%; object-fit: cover; object-position: center top;
-  border: 3px solid var(--g100);
-}
-.founder-name {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 17px; font-weight: 400;
-  color: var(--ink); letter-spacing: 2px;
-}
-.founder-title {
-  font-size: 11px; letter-spacing: 2px;
-  color: var(--g500); margin-top: 4px;
-}
+    /* 運営の約束 */
+    .promise{list-style:none;padding:0;margin:26px 0 0;}
+    .promise li{
+      font-size:14.5px;color:var(--ink);
+      padding:14px 0 14px 26px;position:relative;
+      border-top:1px solid var(--line);line-height:2;
+    }
+    .promise li:first-child{border-top:none;}
+    .promise li::before{
+      content:"";position:absolute;left:0;top:24px;
+      width:7px;height:7px;border-radius:50%;
+      background:var(--aqua);
+    }
+    .note{
+      margin-top:30px;font-size:13px;color:var(--ink-soft);
+      line-height:2;
+    }
 
-/* ── BACKGROUND / FOUNDER ── */
-.background { background: var(--white); }
-.bg-quote {
-  margin: 0 0 32px;
-  padding: 32px 24px 28px;
-  background: var(--g900);
-  position: relative;
-  overflow: hidden; width: 100%;
-}
-.bg-quote::before {
-  content: '"';
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 80px; font-weight: 300;
-  color: var(--g500); line-height: 1;
-  position: absolute; top: 10px; left: 18px;
-  pointer-events: none;
-}
-.bg-quote-text {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 15px; line-height: 2.05; font-weight: 300;
-  color: rgba(255,255,255,0.85);
-  padding-top: 28px;
-  word-break: keep-all; overflow-wrap: break-word;
-}
-.bg-stats {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 2px; background: var(--g100);
-  margin-top: 32px;
-}
-.bstat {
-  padding: 24px 18px; background: var(--white);
-  text-align: center;
-}
-.bstat-n {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 36px; font-weight: 300;
-  color: var(--g700); line-height: 1; margin-bottom: 10px;
-}
-.bstat-l {
-  font-size: 11px; line-height: 1.7; color: var(--mid);
-}
+    /* ── 結び ── */
+    .closing{
+      text-align:center;
+      padding:96px 28px 100px;
+      border-top:1px solid var(--line);
+      position:relative;overflow:hidden;
+    }
+    .closing::before{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg, rgba(127,169,174,0) 0%, var(--sheen) 55%, rgba(127,169,174,0) 100%);
+      pointer-events:none;
+    }
+    .closing > *{position:relative;z-index:1;}
+    .closing .big{
+      font-family:var(--serif);font-weight:200;
+      font-size:clamp(26px,7.5vw,38px);
+      letter-spacing:.08em;line-height:1.7;margin:0 0 20px;
+    }
+    .closing .sub{
+      font-size:14px;color:var(--ink-soft);margin:0 0 40px;
+    }
+    .cta{
+      display:inline-block;
+      font-family:var(--sans);font-weight:400;font-size:14px;
+      letter-spacing:.14em;
+      color:var(--ink);text-decoration:none;
+      padding:15px 38px;
+      border:1px solid var(--ink);
+      border-radius:999px;
+      transition:background .35s ease,color .35s ease;
+    }
+    .cta:hover,.cta:focus{background:var(--ink);color:var(--ground);}
+    .cta-note{
+      margin-top:16px;font-size:12px;letter-spacing:.08em;color:var(--ink-soft);
+    }
 
-/* ── PLAN ── */
-.plan { background: var(--g900); }
-.plan .sec-eyebrow { color: var(--g100); }
-.plan .sec-eyebrow::before { background: var(--g100); }
-.plan .sec-title { color: var(--white); }
-.plan .sec-title em { color: var(--g100); }
-.plan-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 32px 22px;
-  overflow: hidden; width: 100%; box-sizing: border-box;
-}
-.plan-tag {
-  font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--g300); margin-bottom: 16px;
-}
-.plan-headline {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 28px; font-weight: 300; line-height: 1.4;
-  color: var(--white); margin-bottom: 28px;
-}
-.plan-items { display: flex; flex-direction: column; gap: 20px; margin-bottom: 28px; }
-.plan-item { display: flex; gap: 14px; align-items: flex-start; }
-.plan-item > div { min-width: 0; overflow: hidden; }
-.plan-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--g300); flex-shrink: 0;
-  margin-top: 7px;
-}
-.plan-item-title {
-  font-size: 14px; font-weight: 400;
-  color: rgba(255,255,255,0.85); margin-bottom: 5px; line-height: 1.5;
-  word-break: keep-all; overflow-wrap: break-word; width: 100%; display: block;
-}
-.plan-item-body { font-size: 12px; line-height: 1.9; color: rgba(255,255,255,0.45); word-break: keep-all; overflow-wrap: break-word; width: 100%; display: block; }
-.plan-note {
-  font-size: 11px; line-height: 1.9;
-  color: rgba(255,255,255,0.6);
-  border-top: 1px solid rgba(255,255,255,0.15);
-  padding-top: 20px; margin-bottom: 24px;
-  word-break: keep-all; overflow-wrap: break-word;
-}
-.plan-btn {
-  display: flex; align-items: center; justify-content: center;
-  width: 100%; min-height: 56px;
-  background: var(--g300);
-  color: var(--white);
-  font-size: 12px; letter-spacing: 2.5px;
-  text-transform: uppercase;
-  transition: background 0.22s;
-}
-.plan-btn:active { background: var(--g500); }
+    footer{
+      text-align:center;
+      padding:40px 20px 56px;
+      font-family:var(--sans);
+      font-size:12px;letter-spacing:.12em;color:var(--ink-soft);
+    }
+    footer a{color:var(--ink-soft);}
 
-/* ── PHILOSOPHY ── */
-.philosophy { background: var(--g50); }
-.phil-body {
-  font-size: 14px; line-height: 2.1;
-  color: var(--mid); margin-bottom: 20px;
-  word-break: keep-all; overflow-wrap: break-word; width: 100%;
-}
-.phil-quote {
-  margin: 28px 0;
-  padding: 24px 22px;
-  border-left: 3px solid var(--g700);
-  background: var(--white);
-  overflow: hidden; width: 100%;
-  font-family: 'Noto Serif JP', serif;
-  font-size: 15px; line-height: 1.9; font-weight: 400;
-  color: var(--g700);
-  word-break: keep-all;
-}
-.phil-pillars { display: grid; grid-template-columns: 1fr; gap: 2px; }
-.pillar {
-  padding: 22px 18px; background: var(--white); border: 1px solid var(--g50);
-  overflow: hidden; width: 100%;
-}
-.pillar-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 15px; font-weight: 400; letter-spacing: 1px;
-  color: var(--g700); margin-bottom: 8px;
-}
-.pillar-text { font-size: 12px; line-height: 1.9; color: var(--mid); word-break: keep-all; overflow-wrap: break-word; }
+    /* 入場の静かなフェード（控えめ） */
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity 1s ease,transform 1s ease;}
+    .reveal.in{opacity:1;transform:none;}
 
-/* ── FAQ ── */
-.faq-sec { background: var(--white); }
-.faq-list { border-top: 1px solid rgba(26,61,43,0.12); }
-.faq-item { border-bottom: 1px solid rgba(26,61,43,0.12); }
-.faq-q {
-  padding: 20px 0;
-  font-size: 14px; font-weight: 400;
-  color: var(--ink); line-height: 1.6;
-  cursor: pointer;
-  display: flex; justify-content: space-between; align-items: flex-start;
-  gap: 12px;
-  min-height: 56px;
-  word-break: keep-all;
-  user-select: none;
-}
-.faq-arrow {
-  font-size: 20px; font-weight: 300;
-  color: var(--g500); flex-shrink: 0;
-  transition: transform 0.3s var(--ease);
-  line-height: 1.4;
-}
-.faq-item.open .faq-arrow { transform: rotate(45deg); color: var(--g700); }
-.faq-a {
-  font-size: 13px; line-height: 2;
-  color: var(--mid); overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.44s var(--ease), padding 0.44s var(--ease), opacity 0.3s;
-  opacity: 0;
-  word-break: keep-all; overflow-wrap: break-word; width: 100%;
-}
-.faq-item.open .faq-a { max-height: 400px; padding-bottom: 20px; opacity: 1; }
+    a:focus-visible,.cta:focus-visible{outline:2px solid var(--aqua-deep);outline-offset:3px;}
 
-/* ── CONTACT ── */
-.contact-sec {
-  background: var(--g700);
-  padding: 72px 28px;
-  padding-bottom: max(72px, calc(80px + env(safe-area-inset-bottom)));
-  text-align: center;
-}
-.contact-eyebrow {
-  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
-  color: var(--g300); margin-bottom: 20px;
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-}
-.contact-eyebrow::before, .contact-eyebrow::after {
-  content: ''; display: block;
-  width: 20px; height: 1px; background: var(--g300);
-}
-.contact-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(34px, 9vw, 46px); font-weight: 300; line-height: 1.3;
-  color: var(--white); margin-bottom: 20px;
-  letter-spacing: 1px;
-}
-.contact-title em { font-style: italic; color: var(--g100); }
-.contact-sub {
-  font-size: 13px; line-height: 2;
-  color: rgba(255,255,255,0.55);
-  margin-bottom: 36px; word-break: keep-all;
-}
-.contact-btn {
-  display: flex; align-items: center; justify-content: center;
-  min-height: 60px;
-  background: var(--g300);
-  color: var(--white);
-  font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
-  margin-bottom: 20px;
-  transition: background 0.22s;
-}
-.contact-btn:active { background: var(--g500); }
-.contact-email {
-  font-size: 11px; letter-spacing: 1px;
-  color: rgba(255,255,255,0.35);
-}
-
-/* ── PROMISE STRIP ── */
-.promise-strip {
-  background: var(--g50);
-  padding: 40px 24px;
-  border-top: 1px solid var(--g100);
-  border-bottom: 1px solid var(--g100);
-  overflow: hidden; width: 100%;
-}
-.promise-strip-title {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 13px; font-weight: 400;
-  color: var(--g700); margin-bottom: 20px;
-  letter-spacing: 1px;
-}
-.promise-list { display: flex; flex-direction: column; gap: 12px; }
-.promise-item {
-  display: flex; gap: 12px; align-items: flex-start;
-  font-size: 13px; line-height: 1.8; color: var(--mid);
-  word-break: keep-all; overflow-wrap: break-word; width: 100%; min-width: 0;
-}
-.promise-item::before {
-  content: '✦';
-  color: var(--g700); font-size: 10px;
-  flex-shrink: 0; margin-top: 3px;
-}
-.promise-item span { min-width: 0; overflow-wrap: break-word; word-break: keep-all; }
-
-/* ── SERVICE CARDS ── */
-.service-grid { display: flex; flex-direction: column; gap: 2px; }
-.service-card {
-  background: rgba(255,255,255,0.06);
-  padding: 26px 22px;
-  border-left: 3px solid transparent;
-  transition: border-color 0.22s, background 0.22s;
-  overflow: hidden; width: 100%;
-}
-.service-card:active { border-color: var(--g100); background: rgba(255,255,255,0.1); }
-.service-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 28px; font-weight: 300;
-  color: rgba(255,255,255,0.12); line-height: 1; margin-bottom: 8px;
-}
-.service-title {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 15px; font-weight: 400;
-  color: var(--white); margin-bottom: 8px; line-height: 1.6;
-}
-.service-body {
-  font-size: 13px; line-height: 1.9;
-  color: rgba(255,255,255,0.55);
-  word-break: keep-all; overflow-wrap: break-word;
-}
-.service-tag {
-  display: inline-block;
-  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--g100); border: 1px solid rgba(200,230,212,0.3);
-  padding: 3px 8px; margin-bottom: 10px;
-}
-
-/* ── CASE STUDIES ── */
-.case-section { background: var(--g50); }
-.case-card { background: var(--white); padding: 28px 22px; }
-.case-tag { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--g500); margin-bottom: 10px; }
-.case-title { font-family: 'Noto Serif JP', serif; font-size: 15px; font-weight: 400; color: var(--ink); margin-bottom: 14px; line-height: 1.7; }
-.case-label { font-size: 9px; letter-spacing: 2px; color: var(--g500); margin-bottom: 6px; }
-.case-body { font-size: 13px; line-height: 1.9; color: var(--mid); margin-bottom: 14px; word-break: keep-all; overflow-wrap: break-word; }
-.case-result { background: var(--g50); padding: 14px 18px; font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--g700); }
-
-/* ── CALENDLY BUTTON ── */
-.calendly-btn {
-  display: flex; align-items: center; justify-content: center;
-  min-height: 60px; width: 100%;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.4);
-  color: var(--white);
-  font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
-  margin-bottom: 20px;
-  transition: background 0.22s;
-}
-.calendly-btn:active { background: rgba(255,255,255,0.1); }
-.contact-divider {
-  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-  color: rgba(255,255,255,0.3); margin-bottom: 20px; text-align: center;
-}
-
-/* ── FOOTER ── */
-footer {
-  background: var(--g900);
-  padding: 24px 24px;
-  padding-bottom: max(24px, env(safe-area-inset-bottom));
-  display: flex; justify-content: space-between; align-items: center;
-}
-.footer-brand {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 16px; font-weight: 400; letter-spacing: 3px;
-  color: rgba(255,255,255,0.4);
-}
-.footer-copy { font-size: 10px; color: rgba(255,255,255,0.2); letter-spacing: 1px; }
-
-@keyframes fadeIn {
-  from { opacity: 0; } to { opacity: 1; }
-}
-</style>
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto;}
+      .reveal{opacity:1;transform:none;transition:none;}
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav" id="nav">
-  <div class="nav-logo-wrap">
-    <img src="logo.png" alt="" class="nav-logo-img" onerror="this.style.display='none'">
-    <span class="nav-brand">8olais</span>
-  </div>
-  <a href="mailto:8olais.office@gmail.com?subject=初回相談のご希望" class="nav-cta">相談する</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="top">
-  <div class="hero-bg"></div>
-
-  <svg class="hero-compass hero-compass-svg" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <circle cx="140" cy="140" r="120" stroke="white" stroke-width="0.5"/>
-    <circle cx="140" cy="140" r="80" stroke="white" stroke-width="0.5"/>
-    <line x1="140" y1="20" x2="140" y2="260" stroke="white" stroke-width="0.5"/>
-    <line x1="20" y1="140" x2="260" y2="140" stroke="white" stroke-width="0.5"/>
-    <line x1="56" y1="56" x2="224" y2="224" stroke="white" stroke-width="0.3"/>
-    <line x1="224" y1="56" x2="56" y2="224" stroke="white" stroke-width="0.3"/>
-    <polygon points="140,20 134,70 140,60 146,70" fill="white"/>
-  </svg>
-
-  <!-- ロゴ大表示 -->
-  <div class="hero-logo-panel">
-    <img src="logo.png" alt="8olais" class="hero-logo-main">
-    <span class="hero-logo-tagline">8olais（エオレ）— Where Every Decision Matters</span>
+  <div class="topbar">
+    <a href="#top">JA</a>
+    <a href="en.html">EN</a>
   </div>
 
-  <!-- テキスト -->
-  <div class="hero-content">
-    <p class="hero-eyebrow">8olais — 経営判断の伴走支援</p>
-    <h1 class="hero-h1">
-      <em>経営判断の<br>伴走者。</em>
-    </h1>
-    <p class="hero-sub">
-      「この契約を進めるべきか」「この人材を採用するべきか」——
-      そういう判断を、一緒に考えるパートナーがいますか？
+  <!-- ヒーロー -->
+  <header class="hero" id="top">
+    <p class="eyebrow reveal">A small place for your time</p>
+    <h1 class="wordmark reveal">8olais<span class="dot">.</span></h1>
+    <p class="thesis reveal">
+      人生の時間を大切にする人が、<br />
+      病気や肩書きではなく、一人の人間として<br />
+      つながるための、小さな場所。
     </p>
-    <div class="hero-creds">
-      <div class="hero-cred-item">組織マネジメント歴 20年以上</div>
-      <div class="hero-cred-item">本部長・事業責任者経験</div>
-      <div class="hero-cred-item">加盟店撤退率0% / 経常利益654%改善</div>
-      <div class="hero-cred-item">DX・業務改善実績多数</div>
-      <div class="hero-cred-item">現役事業会社マネージャー</div>
-    </div>
-    <a href="mailto:8olais.office@gmail.com?subject=初回相談のご希望" class="hero-btn">初回相談（無料）を申し込む</a>
-  </div>
-</section>
+    <p class="scrollhint reveal">SCROLL</p>
+  </header>
 
-<main>
-<!-- FOR WHO -->
-<section class="sec forwho" id="forwho">
-  <p class="sec-eyebrow reveal">For Who</p>
-  <h2 class="sec-title reveal">こんな判断に、<br><em>困っていませんか。</em></h2>
-  <div class="fw-cards">
-    <div class="fw-card reveal">
-      <div class="fw-card-num">01</div>
-      <div class="fw-card-title">契約書を読む時間も知識もない</div>
-      <div class="fw-card-body">取引先から届いた契約書、このまま押してよいのか。リスク箇所を整理して「サインしてよいか」を判断できる状態にします。</div>
-    </div>
-    <div class="fw-card reveal">
-      <div class="fw-card-num">02</div>
-      <div class="fw-card-title">経営判断を相談できる人がいない</div>
-      <div class="fw-card-body">税理士には税務、弁護士には法律を聞ける。でも「この判断、どう思う？」を気軽に話せるプロがいない。それが8olaisの役割です。</div>
-    </div>
-    <div class="fw-card reveal">
-      <div class="fw-card-num">03</div>
-      <div class="fw-card-title">問題が起きてから動いている</div>
-      <div class="fw-card-body">トラブルが表面化してから対処するのでは遅い。定期的な接触で、問題が大きくなる前に論点を潰します。</div>
-    </div>
-    <div class="fw-card reveal">
-      <div class="fw-card-num">04</div>
-      <div class="fw-card-title">人が採れない・辞めていく</div>
-      <div class="fw-card-body">採用が進まない、離職が止まらない。原因が人なのか、組織なのか、条件なのか。構造を整理して次の一手を決めます。</div>
-    </div>
-    <div class="fw-card reveal">
-      <div class="fw-card-num">05</div>
-      <div class="fw-card-title">FC展開を考えている・加盟している</div>
-      <div class="fw-card-body">本部・加盟店どちらの立場でも支援します。<span class="em-green">撤退率0%・経常利益654%改善</span>の実績があります。</div>
-    </div>
-  </div>
-  <div class="fw-not reveal">
-    <div class="fw-not-label">こんな方には向いていません</div>
-    <div class="fw-not-body">答えだけを求める方 / 弁護士・税理士の代替を求める方 / 定期的な関与を必要としない方</div>
-  </div>
-</section>
+  <main class="wrap">
 
-<!-- WHAT WE DO -->
-<section class="sec what" id="what">
-  <p class="sec-eyebrow reveal">What We Do</p>
-  <h2 class="sec-title reveal">9つの領域で、<br><em>経営者の判断を支える。</em></h2>
-  <div class="service-grid">
+    <!-- なぜ -->
+    <section class="chapter reveal">
+      <p class="ch-label">Message</p>
+      <h2 class="ch-title">なぜ、この場所をつくるのか</h2>
+      <p>
+        大切な人が病気と向き合う姿のそばにいたとき、病そのものの苦しさだけでなく、
+        家族にも友人にも言いにくい気持ちがあることに気づきました。
+      </p>
+      <p>
+        8olaisは、治療をする場所ではありません。医療の代わりにもなれません。
+        けれど、誰かの話を静かに聞くこと、誰かの気持ちにそっと寄り添うことは、できるかもしれません。
+      </p>
+      <div class="quiet">
+        <p>
+          病気の話をしてもいい。しなくてもいい。<br />
+          今日食べたご飯の話でも、昔の思い出でも、好きな映画の話でもいい。<br />
+          大切なのは、病気ではなく、その人自身だから。
+        </p>
+      </div>
+    </section>
 
-    <div class="service-card reveal">
-      <div class="service-num">01</div>
-      <div class="service-tag">Management</div>
-      <div class="service-title">経営判断支援</div>
-      <div class="service-body">契約・意思決定・事業判断。経営者が迷う場面を構造化し、<span style="color:var(--g100);">事実と推測を分けて</span>次の一手を整理します。</div>
-    </div>
-
-    <div class="service-card reveal">
-      <div class="service-num">02</div>
-      <div class="service-tag">Franchise</div>
-      <div class="service-title">FC展開支援</div>
-      <div class="service-body">本部・加盟店どちらの立場でも対応。<span style="color:var(--g100);">撤退率0%・経常利益654%改善</span>の実績をもとに、FC特有の課題を支援します。</div>
-    </div>
-
-    <div class="service-card reveal">
-      <div class="service-num">03</div>
-      <div class="service-tag">Organization</div>
-      <div class="service-title">組織・採用支援</div>
-      <div class="service-body">採用判断・離職対策・組織設計。人の問題か、構造の問題か。原因を整理して解決策を決めます。</div>
-    </div>
-
-    <div class="service-card reveal">
-      <div class="service-num">04</div>
-      <div class="service-tag">Legal</div>
-      <div class="service-title">契約・法務サポート</div>
-      <div class="service-body">契約書のリスク箇所を抽出・整理。専門家判断が必要な場合は、適切な専門家へつなぎます。</div>
-    </div>
-
-    <div class="service-card reveal">
-      <div class="service-num">05</div>
-      <div class="service-tag">Finance</div>
-      <div class="service-title">財務・数値支援</div>
-      <div class="service-body">収支構造の可視化・損益の読み方・予算管理。数字を根拠とした意思決定を支援します。</div>
-    </div>
-
-    <div class="service-card reveal">
-      <div class="service-num">06</div>
-      <div class="service-tag">Turnaround</div>
-      <div class="service-title">事業再建支援</div>
-      <div class="service-body">不振事業の立て直し・撤退判断。精神論ではなく、市場調査と課題分析から解決策を設計します。</div>
-    </div>
-
-    <div class="service-card reveal">
-      <div class="service-num">07</div>
-      <div class="service-tag">New Business</div>
-      <div class="service-title">新規事業立ち上げ支援</div>
-      <div class="service-body">事業計画の立案から実行・検証まで。子会社代表として新規事業を0から立ち上げた経験をもとに支援します。</div>
-    </div>
-
-    <div class="service-card reveal">
-      <div class="service-num">08</div>
-      <div class="service-tag">Digital</div>
-      <div class="service-title">EC・デジタル運営支援</div>
-      <div class="service-body">ECサイト構築・物流体制・業務自動化。Shopify・GASを活用した仕組みづくりと運営体制の整備を支援します。</div>
-    </div>
-
-    <div class="service-card reveal">
-      <div class="service-num">09</div>
-      <div class="service-tag">DX / AI</div>
-      <div class="service-title">DX・AI活用支援</div>
-      <div class="service-body">生成AI・ChatGPT導入支援・プロンプト設計・業務自動化。現場で実際に使える仕組みとして導入を支援します。</div>
-    </div>
-
-  </div>
-</section>
-
-<!-- PROMISE STRIP -->
-<div class="promise-strip">
-  <p class="promise-strip-title reveal">クライアントへの6つの約束</p>
-  <div class="promise-list">
-    <div class="promise-item reveal"><span>結論を最初に伝える。回り道をしない。</span></div>
-    <div class="promise-item reveal"><span>事実と推測を必ず分ける。憶測で安心させない。</span></div>
-    <div class="promise-item reveal"><span>不利な情報も、隠さず伝える。</span></div>
-    <div class="promise-item reveal"><span>法的・専門的判断が必要な場合は、専門家への連携を明示する。</span></div>
-    <div class="promise-item reveal"><span>判断を代わりに下さない。判断できる状態をつくる。</span></div>
-    <div class="promise-item reveal"><span>「やるべきこと」を、5分で判断できる粒度に整理する。</span></div>
-  </div>
-</div>
-
-<!-- BACKGROUND / FOUNDER -->
-<section class="sec background" id="background">
-  <p class="sec-eyebrow reveal">Background</p>
-  <h2 class="sec-title reveal">迷いを、<br><em>次の一手に変える。</em></h2>
-  <div class="founder-profile reveal">
-    <img src="founder.png" alt="津守浩通" class="founder-photo">
-    <div style="text-align:center;">
-      <div class="founder-name">津守 浩通</div>
-      <div class="founder-title">8olais Founder</div>
-    </div>
-  </div>
-  <p class="sec-body reveal">FC事業において、<span class="em-num">15店舗</span>から業界第二位<span class="em-num">278店舗</span>への拡大を支援。<span class="em-green">加盟店撤退率0%</span>を長期維持し、経常利益<span class="em-num">654%</span>改善を実現。本部側・加盟店側の両方の論理を身体で知っています。</p>
-  <div class="bg-quote reveal">
-    <p class="bg-quote-text">大手コンサルが来ない規模の経営者こそ、判断の伴走者を必要としている。その確信から、8olaisを立ち上げました。</p>
-  </div>
-  <p class="sec-body reveal">幼少期から「答えを与えるのではなく、自ら判断できる状態をつくる」という価値観の中で育ちました。その思想が、8olaisの根幹にあります。</p>
-  <div class="bg-stats reveal">
-    <div class="bstat">
-      <div class="bstat-n">278<span style="font-size:16px;">店</span></div>
-      <div class="bstat-l">FC展開実績<br>（15店舗から成長）</div>
-    </div>
-    <div class="bstat">
-      <div class="bstat-n">0<span style="font-size:16px;">%</span></div>
-      <div class="bstat-l">加盟店撤退率<br>（250店舗管理時）</div>
-    </div>
-    <div class="bstat">
-      <div class="bstat-n">654<span style="font-size:16px;">%</span></div>
-      <div class="bstat-l">経常利益改善<br>（事業部長時代）</div>
-    </div>
-    <div class="bstat">
-      <div class="bstat-n">28<span style="font-size:16px;">年</span></div>
-      <div class="bstat-l">フランチャイズ<br>実務経験</div>
-    </div>
-  </div>
-</section>
-
-<!-- PLAN -->
-<section class="sec plan" id="plan">
-  <p class="sec-eyebrow reveal">Plan</p>
-  <h2 class="sec-title reveal">規模と課題に合わせた、<br><em>オーダーメイドの伴走。</em></h2>
-  <div class="plan-card reveal">
-    <div class="plan-tag">Monthly Retainer</div>
-    <div class="plan-headline">初回相談で<br>ご提案します</div>
-    <div class="plan-items">
-      <div class="plan-item">
-        <div class="plan-dot"></div>
-        <div>
-          <div class="plan-item-title">定期ミーティング（対面・オンライン）</div>
-          <div class="plan-item-body">経営課題・懸案事項を整理し、論点を構造化して次の行動を決める。</div>
+    <!-- できること -->
+    <section class="chapter reveal">
+      <p class="ch-label">What you can do</p>
+      <h2 class="ch-title">ここでできること</h2>
+      <div class="list">
+        <div class="item">
+          <h3>今日の気持ち</h3>
+          <p>いまの気持ちを、短く残す。誰かが静かに受け止める。</p>
+        </div>
+        <div class="item">
+          <h3>聞いてほしい</h3>
+          <p>家族や友人には言いにくいことを、無理のない範囲で言葉にする。</p>
+        </div>
+        <div class="item">
+          <h3>思い出</h3>
+          <p>大切な記憶や、忘れたくない時間を残す。</p>
+        </div>
+        <div class="item">
+          <h3>雑談</h3>
+          <p>病気や悩みから少し離れて、ふつうの話をする。</p>
         </div>
       </div>
-      <div class="plan-item">
-        <div class="plan-dot"></div>
-        <div>
-          <div class="plan-item-title">契約書・資料のレビュー</div>
-          <div class="plan-item-body">リスク箇所の抽出と論点整理。専門家へのつなぎも対応。</div>
-        </div>
-      </div>
-      <div class="plan-item">
-        <div class="plan-dot"></div>
-        <div>
-          <div class="plan-item-title">数値・財務の判断支援</div>
-          <div class="plan-item-body">収支構造の可視化・損益の読み方サポート。</div>
-        </div>
-      </div>
-      <div class="plan-item">
-        <div class="plan-dot"></div>
-        <div>
-          <div class="plan-item-title">緊急相談への対応</div>
-          <div class="plan-item-body">トラブル発生時はミーティング外でもテキスト・電話で対応。</div>
-        </div>
-      </div>
-      <div class="plan-item">
-        <div class="plan-dot"></div>
-        <div>
-          <div class="plan-item-title">専門家ネットワークへのつなぎ</div>
-          <div class="plan-item-body">法務・財務・労務で専門家判断が必要な場合、適切な専門家を紹介。</div>
-        </div>
-      </div>
-    </div>
-    <div class="plan-note">
-      ※ 月額15万円〜（内容・規模によりご提案）。初回相談（無料）にてヒアリングのうえ確定します。<br>
-      ※ 最短契約期間6ヶ月。継続は1ヶ月単位で更新。
-    </div>
-    <a href="mailto:8olais.office@gmail.com?subject=初回相談のご希望" class="plan-btn">初回相談（無料）を申し込む</a>
-  </div>
-</section>
+    </section>
 
-<!-- PHILOSOPHY -->
-<section class="sec philosophy" id="philosophy">
-  <p class="sec-eyebrow reveal">Philosophy</p>
-  <h2 class="sec-title reveal">人が介入しすぎると、<br><em>壊れるものがある。</em></h2>
-  <p class="phil-body reveal">人が介入しすぎると、壊れるものがある。<span class="em-green">経営も同じです。</span></p>
-  <p class="phil-body reveal">コントロールが行き過ぎれば現場の自律は死に、管理が足りなければ組織は崩れる。<span class="em-green">介入の質と量を設計すること</span>が、持続する事業の条件です。</p>
-  <div class="phil-quote reveal">
-    介入の質と量を設計することが、<br>持続する事業の条件です。
-  </div>
-  <div class="phil-pillars reveal">
-    <div class="pillar">
-      <div class="pillar-label">Balance</div>
-      <div class="pillar-text">管理と自律のバランスポイントを、数値と構造で可視化します。</div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-label">Ecosystem</div>
-      <div class="pillar-text">経営者・従業員・顧客・取引先は生態系。一者の過剰が全体を壊す前に診断します。</div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-label">Judgment</div>
-      <div class="pillar-text">事実・数値・契約・現場の声を整理し、経営者が自らの判断軸で動ける状態をつくります。</div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-label">Continuity</div>
-      <div class="pillar-text">今期の数字と、5年後も会社が続いているかどうか。両方を視野に入れた伴走です。</div>
-    </div>
-  </div>
-</section>
+    <!-- 大切にすること（運営の約束） -->
+    <section class="chapter reveal">
+      <p class="ch-label">Our promise</p>
+      <h2 class="ch-title">大切にすること</h2>
+      <p>
+        安心して話せる場所であるために、運営として次のことを守ります。
+      </p>
+      <ul class="promise">
+        <li>出会いを目的とした場所にはしません。</li>
+        <li>金銭の要求・投資や宗教などの勧誘を禁止し、確認しだい退会の対象とします。</li>
+        <li>診断・治療・投薬に関する助言は行いません。医療は専門機関へつなぎます。</li>
+        <li>誹謗中傷を許しません。通報とブロックの仕組みを用意します。</li>
+        <li>つらい気持ちが限界に近いと感じたときのために、相談窓口への案内を備えます。</li>
+      </ul>
+      <p class="note">
+        8olaisはいま、準備をしている段階です。完成した答えを持っているわけではありません。
+        まずは小さく始め、必要としてくれる人の声を聞きながら、ゆっくり育てていきます。
+      </p>
+    </section>
 
-<!-- FAQ -->
-<section class="sec faq-sec" id="faq">
-  <p class="sec-eyebrow reveal">FAQ</p>
-  <h2 class="sec-title reveal">よくある<em>ご質問</em></h2>
-  <div class="faq-list">
-    <div class="faq-item reveal">
-      <div class="faq-q">FC事業以外でも相談できますか？<span class="faq-arrow">＋</span></div>
-      <div class="faq-a">はい。経営判断の構造化・契約精査・財務論点の整理・組織トラブルの対処など、業種を問わず対応します。FCは最も得意な領域ですが、中小企業全般の経営判断支援が8olaisの本来の役割です。</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">弁護士・税理士との違いは何ですか？<span class="faq-arrow">＋</span></div>
-      <div class="faq-a">弁護士は法的判断、税理士は税務処理の専門家です。8olaisは「この契約書にサインしてよいか」「この取引先と続けるべきか」など、経営判断そのものを一緒に考えます。専門的判断が必要な場面は、適切な専門家につなぎます。</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">料金はいくらですか？<span class="faq-arrow">＋</span></div>
-      <div class="faq-a">月額15万円〜を目安としています。企業規模・課題の複雑さ・対応範囲によって変わりますので、初回相談（無料）でヒアリングのうえご提案します。</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">オンラインのみでも対応できますか？<span class="faq-arrow">＋</span></div>
-      <div class="faq-a">はい。対面・オンラインの組み合わせは、規模や状況に応じてご提案します。まずお気軽にご相談ください。</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">6ヶ月契約後はどうなりますか？<span class="faq-arrow">＋</span></div>
-      <div class="faq-a">1ヶ月単位での継続更新となります。継続・終了いずれも、1ヶ月前にご連絡いただければ対応します。</div>
-    </div>
-  </div>
-</section>
+  </main>
 
-<!-- CASE STUDIES -->
-<section class="sec case-section" id="cases-study">
-  <p class="sec-eyebrow reveal">実績</p>
-  <h2 class="sec-title reveal" style="color: var(--ink);">支援の<em style="color: var(--g700);">実績。</em></h2>
+  <!-- 結び -->
+  <section class="closing reveal">
+    <p class="big">今日を生きる。<br />また明日へ。</p>
+    <p class="sub">8olaisは、人生の時間を大切にする人のための場所です。</p>
+    <a class="cta" href="#" aria-label="オープンのお知らせを受け取る（準備中）">お知らせを受け取る</a>
+    <p class="cta-note">準備中です。オープンが決まりしだい、ご登録の方へお知らせします。</p>
+  </section>
 
-  <div style="display:flex; flex-direction:column; gap:2px; margin-bottom:2px;">
+  <footer>
+    © 2026 8olais
+  </footer>
 
-    <div class="case-card reveal">
-      <div class="case-tag">Case 01 — FC事業 / 組織再建</div>
-      <div class="case-title">利益が昨対71.4%まで低下した250店舗FC事業を、構造分析で立て直す</div>
-      <div class="case-label">BEFORE</div>
-      <div class="case-body">店舗数増加に伴い一人当たり生産性が低下。売上低迷のたびに「営業力強化」の研修を繰り返すが改善しない状態が続いていた。</div>
-      <div class="case-label">AFTER</div>
-      <div class="case-body">市場調査・社員個別カルテ作成により根本課題を特定。営業力ではなく戦略・オペレーション・KPI設計の問題と判断し、構造から改善。</div>
-      <div class="case-result">経常利益 昨対比 654%改善</div>
-    </div>
-
-    <div class="case-card reveal">
-      <div class="case-tag">Case 02 — FC事業 / 加盟店管理</div>
-      <div class="case-title">250店舗・6年間にわたり加盟店撤退率0%を維持</div>
-      <div class="case-label">概要</div>
-      <div class="case-body">15店舗規模から業界第2位278店舗への成長過程で、FC本部として加盟店との契約管理・交渉・サポートを一貫して担当。長期にわたる信頼関係の構築と課題の早期発見により、撤退率0%を維持し続けた。</div>
-      <div class="case-result">250店舗管理時 撤退率 0%</div>
-    </div>
-
-    <div class="case-card reveal">
-      <div class="case-tag">Case 03 — サービス業 / 営業利益改善</div>
-      <div class="case-title">98店舗・40名の営業部門でKPI再設計と体制整備</div>
-      <div class="case-label">概要</div>
-      <div class="case-body">98店舗・40名を管掌する事業責任者として、研修企画・制度見直し・社内意思決定フロー構築・KPI改善を推進。債権管理・契約交渉・クレーム対応も一括で担当した。</div>
-      <div class="case-result">売上105% / 営業利益155% 達成</div>
-    </div>
-
-  </div>
-</section>
-
-<!-- PRE-CONTACT: 背中押し -->
-<section class="sec" id="cases" style="background: var(--white);">
-  <p class="sec-eyebrow reveal">よくある相談</p>
-  <h2 class="sec-title reveal" style="color: var(--ink);">こんな相談から<br><em style="color: var(--g700);">始まっています。</em></h2>
-  <div style="display:flex; flex-direction:column; gap:2px;">
-    <div class="fw-card reveal" style="background: var(--g50);">
-      <div class="fw-card-body" style="color: var(--ink); font-size:14px;">「この契約書、進めるべきですか」</div>
-    </div>
-    <div class="fw-card reveal" style="background: var(--g50);">
-      <div class="fw-card-body" style="color: var(--ink); font-size:14px;">「この人材を採用するべきですか」</div>
-    </div>
-    <div class="fw-card reveal" style="background: var(--g50);">
-      <div class="fw-card-body" style="color: var(--ink); font-size:14px;">「取引先との関係を続けるべきですか」</div>
-    </div>
-    <div class="fw-card reveal" style="background: var(--g50);">
-      <div class="fw-card-body" style="color: var(--ink); font-size:14px;">「FC展開を進めるべきですか」</div>
-    </div>
-    <div class="fw-card reveal" style="background: var(--g50);">
-      <div class="fw-card-body" style="color: var(--ink); font-size:14px;">「この事業から撤退するべきですか」</div>
-    </div>
-    <div class="fw-card reveal" style="background: var(--g50);">
-      <div class="fw-card-body" style="color: var(--ink); font-size:14px;">「採用を続けても人が定着しません」</div>
-    </div>
-    <div class="fw-card reveal" style="background: var(--g50);">
-      <div class="fw-card-body" style="color: var(--ink); font-size:14px;">「なぜ離職が止まらないのかわかりません」</div>
-    </div>
-  </div>
-  <p class="sec-body reveal" style="color: var(--mid); margin-top: 24px;">大きな問題でなくても構いません。経営判断に迷った時点でご相談ください。</p>
-</section>
-
-<!-- CONTACT -->
-<section class="contact-sec" id="contact">
-  <p class="contact-eyebrow reveal">Contact</p>
-  <h2 class="contact-title reveal">まず、<em>ご相談ください。</em></h2>
-  <p class="contact-sub reveal">初回相談は無料です。業種・規模は問いません。<br>「判断に迷っている」その状態から、一緒に整理します。</p>
-  <a href="https://calendly.com/8olais-office/30min" target="_blank" rel="noopener" class="contact-btn reveal">日程を選んで予約する</a>
-  <p class="contact-divider reveal">または</p>
-  <a href="mailto:8olais.office@gmail.com" class="calendly-btn reveal">メールで相談する</a>
-  <p class="contact-email reveal">8olais.office@gmail.com</p>
-</section>
-
-</main>
-
-<footer>
-  <span class="footer-brand">8olais</span>
-  <span class="footer-copy">© 2026 8olais.</span>
-</footer>
-
-<!-- STICKY BOTTOM CTA (appears after hero) -->
-<div class="sticky-cta" id="stickyCta" aria-hidden="true">
-  <a href="mailto:8olais.office@gmail.com?subject=初回相談のご希望">初回相談（無料）を申し込む</a>
-</div>
-
-<script>
-// ── Scroll reveal
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      revealObserver.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-// ── Nav shadow on scroll
-const nav = document.getElementById('nav');
-const stickyCta = document.getElementById('stickyCta');
-const hero = document.querySelector('.hero');
-let heroBottom = 0;
-
-function updateHeroBottom() {
-  heroBottom = hero.getBoundingClientRect().bottom + window.scrollY;
-}
-updateHeroBottom();
-window.addEventListener('resize', updateHeroBottom);
-
-const contactSection = document.getElementById('contact');
-
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  nav.classList.toggle('scrolled', y > 20);
-
-  const isPastHero = y > heroBottom - 60;
-  const contactTop = contactSection.getBoundingClientRect().top;
-  const isContactVisible = contactTop < window.innerHeight * 0.9;
-
-  const showSticky = isPastHero && !isContactVisible;
-  stickyCta.classList.toggle('visible', showSticky);
-  stickyCta.setAttribute('aria-hidden', String(!showSticky));
-}, { passive: true });
-
-// ── FAQ accordion
-document.querySelectorAll('.faq-q').forEach(q => {
-  q.addEventListener('click', () => {
-    const item = q.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  });
-});
-</script>
+  <script>
+    // 控えめなスクロール・リビール
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach((el,i)=>{
+      el.style.transitionDelay = (Math.min(i,4)*0.08)+'s';
+      io.observe(el);
+    });
+  </script>
 </body>
 </html>
